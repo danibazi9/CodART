@@ -68,3 +68,15 @@ class MoveClassRefactoringListener(Java9_v2Listener):
             return
         field_name = ctx.variableDeclaratorList().variableDeclarator(i=0).getText()
         self.moved_fields.append(field_name)
+
+    # Enter a parse tree produced by Java9_v2Parser#methodDeclaration.
+    def enterMethodDeclaration(self, ctx: Java9_v2Parser.MethodDeclarationContext):
+        if not self.enter_class:
+            return
+        method_name = ctx.methodHeader().methodDeclarator().identifier().getText()
+        self.moved_methods.append(method_name)
+
+    # Exit a parse tree produced by Java9_v2Parser#methodDeclaration.
+    def exitMethodDeclaration(self, ctx: Java9_v2Parser.MethodDeclarationContext):
+        if not self.enter_class:
+            return
