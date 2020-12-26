@@ -60,3 +60,11 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         print("----------------------------")
         self.moved_fields = []
         self.moved_methods = []
+
+    # when exiting from a class attribute (field) declaration this method is invoked.
+    # This method adds attributes of the target class to a dictionary
+    def enterFieldDeclaration(self, ctx: Java9_v2Parser.FieldDeclarationContext):
+        if not self.enter_class:
+            return
+        field_name = ctx.variableDeclaratorList().variableDeclarator(i=0).getText()
+        self.moved_fields.append(field_name)
