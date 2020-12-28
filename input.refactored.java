@@ -1,5 +1,3 @@
-package a.aa;
-
 /* Before refactoring (Original version) */
 class A
 {
