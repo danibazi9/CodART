@@ -15,13 +15,14 @@ class MoveClassRefactoringListener(Java9_v2Listener):
     """
 
     def __init__(self, common_token_stream: CommonTokenStream = None, class_identifier: str = None,
-                 source_package: str = None, target_package: str = None):
+                 source_package: str = None, target_package: str = None, filename: str = None):
         """
         :param common_token_stream:
         """
         self.enter_class = False
         self.token_stream = common_token_stream
         self.class_identifier = class_identifier
+        self.class_number = 0
 
         # Move all the tokens in the source code in a buffer, token_stream_rewriter.
         if common_token_stream is not None:
@@ -36,6 +37,11 @@ class MoveClassRefactoringListener(Java9_v2Listener):
             self.class_identifier = class_identifier
         else:
             raise ValueError("class_identifier is None")
+
+        if filename is not None:
+            self.filename = filename
+        else:
+            raise ValueError("filename is None")
 
         if source_package is not None:
             directory = source_package.replace('.', '/')
@@ -68,27 +74,42 @@ class MoveClassRefactoringListener(Java9_v2Listener):
     # Enter a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         print("Refactoring started, please wait...")
+        self.class_number += 1
         if ctx.identifier().getText() != self.class_identifier:
-            raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
-        else:
-            self.code += self.NEW_LINE * 2
-            self.code += f"// Class \"{self.class_identifier}\" has moved here " \
-                         f"from package {self.source_package} by CodART" + self.NEW_LINE
-            self.code += f"class {self.class_identifier}{self.NEW_LINE}" + "{" + self.NEW_LINE
-            self.enter_class = True
+            return
+        self.enter_class = True
 
     # Exit a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def exitNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         self.enter_class = False
+        if ctx.identifier().getText() != self.class_identifier:
+            return
+
+        start_index = ctx.start.tokenIndex
+        stop_index = ctx.stop.tokenIndex
 
         # get the class body from the token_stream_rewriter
         class_body = self.token_stream_rewriter.getText(
             program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
-            start=ctx.start.tokenIndex,
-            stop=ctx.stop.tokenIndex
+            start=start_index,
+            stop=stop_index
         )
 
-        self.code = f"package {self.target_package}; {self.NEW_LINE * 2}{class_body}"
+        self.code = f"package {self.target_package};"
+        self.code += self.NEW_LINE * 2
+        self.code += f"// Class \"{self.class_identifier}\" moved here " \
+                     f"from package {self.source_package} by CodART" + self.NEW_LINE + \
+                     f"{class_body}"
+
+        # delete class declaration from source class
+        self.token_stream_rewriter.delete(
+            program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+            from_idx=start_index,
+            to_idx=stop_index
+        )
+
+        old_file = open(self.filename, 'w')
+        old_file.write(self.token_stream_rewriter.getDefaultText().replace("\r", ""))
 
         print("----------------------------")
         print("Class attributes: ", str(self.class_fields))
@@ -115,13 +136,27 @@ class MoveClassRefactoringListener(Java9_v2Listener):
     # Exit a parse tree produced by Java9_v2Parser#ordinaryCompilation.
     def exitOrdinaryCompilation(self, ctx: Java9_v2Parser.OrdinaryCompilationContext):
         file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
+        if self.class_number == 0:
+            raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
+        if self.class_number == 1:
+            os.remove(self.filename)
+            print(f"The class \"{self.class_identifier}\" removed from the source package.")
+
         new_file = open(file_address, 'w')
         new_file.write(self.code.replace("\r", ""))
+        print(f"The class \"{self.class_identifier}\" moved to the target package.")
         print("Finished Processing...")
 
     # Enter a parse tree produced by Java9_v2Parser#modularCompilation.
     def exitModularCompilation(self, ctx: Java9_v2Parser.ModularCompilationContext):
         file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
+        if self.class_number == 0:
+            raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
+        if self.class_number == 1:
+            os.remove(self.filename)
+            print(f"The class \"{self.class_identifier}\" removed from the source package.")
+
         new_file = open(file_address, 'w')
         new_file.write(self.code.replace("\r", ""))
+        print(f"The class \"{self.class_identifier}\" moved to the target package.")
         print("Finished Processing...")
