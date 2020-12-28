@@ -59,6 +59,12 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         self.NEW_LINE = "\n"
         self.code = ""
 
+    # Enter a parse tree produced by Java9_v2Parser#packageDeclaration.
+    def enterPackageDeclaration(self, ctx: Java9_v2Parser.PackageDeclarationContext):
+        package_name = ctx.getText().split("package")[1].replace(';', '')
+        if package_name != self.source_package:
+            raise ValueError(f"The package {package_name} isn't equal to the source package!")
+
     # Enter a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         print("Refactoring started, please wait...")
@@ -105,3 +111,17 @@ class MoveClassRefactoringListener(Java9_v2Listener):
             return
         method_name = ctx.methodHeader().methodDeclarator().identifier().getText()
         self.class_methods.append(method_name)
+
+    # Exit a parse tree produced by Java9_v2Parser#ordinaryCompilation.
+    def exitOrdinaryCompilation(self, ctx: Java9_v2Parser.OrdinaryCompilationContext):
+        file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
+        new_file = open(file_address, 'w')
+        new_file.write(self.code.replace("\r", ""))
+        print("Finished Processing...")
+
+    # Enter a parse tree produced by Java9_v2Parser#modularCompilation.
+    def exitModularCompilation(self, ctx: Java9_v2Parser.ModularCompilationContext):
+        file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
+        new_file = open(file_address, 'w')
+        new_file.write(self.code.replace("\r", ""))
+        print("Finished Processing...")
