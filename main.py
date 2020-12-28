@@ -39,7 +39,8 @@ def main(args):
 
     # Step 6: Create an instance of AssignmentStListener
     my_listener = MoveClassRefactoringListener(common_token_stream=token_stream, class_identifier='A',
-                                               source_package='a.aa', target_package='b.bbbb')
+                                               filename=args.file,
+                                               source_package='a.aa', target_package='c')
 
     # return
     walker = ParseTreeWalker()
@@ -53,6 +54,6 @@ if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         '-n', '--file',
-        help='Input source', default=r'a/aa/new_class.java')
+        help='Input source', default=r'a/aa/A.java')
     args = argparser.parse_args()
     main(args)
