@@ -49,7 +49,7 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         if target_package is not None:
             directory = target_package.replace('.', '/')
             if not os.path.exists(directory):
-                os.mkdir(directory)
+                os.makedirs(directory)
                 print(f"The package {target_package} created, because doesn't exist!")
             self.target_package = target_package
         else:
