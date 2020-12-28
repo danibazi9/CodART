@@ -1,7 +1,9 @@
+package x.xx;
+
 /* Before refactoring (Original version) */
 class A
 {
-    public int f; /* printF , printF, */
+    public int f, c, a; /* printF , printF, */
     public int g; /* printF, printG */
     public string h; /* printH */
 

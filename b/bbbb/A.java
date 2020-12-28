@@ -1,6 +1,5 @@
-package a.aa;
+package b.bbbb; 
 
-/* Before refactoring (Original version) */
 class A
 {
     public int f, c, a; /* printF , printF, */
