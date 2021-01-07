@@ -22,7 +22,6 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         self.enter_class = False
         self.token_stream = common_token_stream
         self.class_identifier = class_identifier
-        self.class_number = 0
         self.class_found = False
 
         # Move all the tokens in the source code in a buffer, token_stream_rewriter.
@@ -75,7 +74,6 @@ class MoveClassRefactoringListener(Java9_v2Listener):
     # Enter a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         print("Refactoring started, please wait...")
-        self.class_number += 1
         if ctx.identifier().getText() != self.class_identifier:
             return
         self.enter_class = True
