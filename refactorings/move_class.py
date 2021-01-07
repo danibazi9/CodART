@@ -54,10 +54,10 @@ class MoveClassRefactoringListener(Java9_v2Listener):
 
         if target_package is not None:
             directory = target_package.replace('.', '/')
-            if not os.path.exists(directory):
-                os.makedirs(directory)
-                print(f"The package {target_package} created, because doesn't exist!")
-            self.target_package = target_package
+            if os.path.exists(directory):
+                self.target_package = target_package
+            else:
+                raise ValueError(f"The package \"{target_package}\" NOT FOUND!")
         else:
             raise ValueError("target_package is None")
 
@@ -138,9 +138,6 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
         if self.class_number == 0:
             raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
-        if self.class_number == 1:
-            os.remove(self.filename)
-            print(f"The class \"{self.class_identifier}\" removed from the source package.")
 
         new_file = open(file_address, 'w')
         new_file.write(self.code.replace("\r", ""))
@@ -152,9 +149,6 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
         if self.class_number == 0:
             raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
-        if self.class_number == 1:
-            os.remove(self.filename)
-            print(f"The class \"{self.class_identifier}\" removed from the source package.")
 
         new_file = open(file_address, 'w')
         new_file.write(self.code.replace("\r", ""))
