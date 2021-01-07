@@ -23,6 +23,7 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         self.token_stream = common_token_stream
         self.class_identifier = class_identifier
         self.class_number = 0
+        self.class_found = False
 
         # Move all the tokens in the source code in a buffer, token_stream_rewriter.
         if common_token_stream is not None:
@@ -78,6 +79,7 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         if ctx.identifier().getText() != self.class_identifier:
             return
         self.enter_class = True
+        self.class_found = True
 
     # Exit a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def exitNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
@@ -117,7 +119,7 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         print("----------------------------")
 
     # Enter a parse tree produced by Java9_v2Parser#fieldDeclaration.
-    def enterFieldDeclaration(self, ctx:Java9_v2Parser.FieldDeclarationContext):
+    def enterFieldDeclaration(self, ctx: Java9_v2Parser.FieldDeclarationContext):
         if not self.enter_class:
             return
 
@@ -136,7 +138,7 @@ class MoveClassRefactoringListener(Java9_v2Listener):
     # Exit a parse tree produced by Java9_v2Parser#ordinaryCompilation.
     def exitOrdinaryCompilation(self, ctx: Java9_v2Parser.OrdinaryCompilationContext):
         file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
-        if self.class_number == 0:
+        if not self.class_found:
             raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
 
         new_file = open(file_address, 'w')
@@ -147,7 +149,7 @@ class MoveClassRefactoringListener(Java9_v2Listener):
     # Enter a parse tree produced by Java9_v2Parser#modularCompilation.
     def exitModularCompilation(self, ctx: Java9_v2Parser.ModularCompilationContext):
         file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
-        if self.class_number == 0:
+        if not self.class_found:
             raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
 
         new_file = open(file_address, 'w')
