@@ -40,8 +40,8 @@ def main(args):
     print("=====Create ParseTree Finished=====")
 
     # Step 6: Create an instance of AssignmentStListener
-    my_listener = RemoveFieldRefactoringListener(common_token_stream=token_stream, class_identifier='Main',
-                                               fieldname='doublyLinkedList', filename=args.file)
+    my_listener = RemoveFieldRefactoringListener(common_token_stream=token_stream, class_identifier='A',
+                                                 fieldname='f', filename=args.file)
 
     # return
     walker = ParseTreeWalker()
