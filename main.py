@@ -38,7 +38,7 @@ def main(args):
     parse_tree = parser.compilationUnit()
 
     # Step 6: Create an instance of AssignmentStListener
-    my_listener = MoveClassRefactoringListener(common_token_stream=token_stream, class_identifier='A',
+    my_listener = MoveClassRefactoringListener(common_token_stream=token_stream, class_identifier='B',
                                                filename=args.file,
                                                source_package='a.aa', target_package='c')
 
