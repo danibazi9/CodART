@@ -87,13 +87,22 @@ class MoveClassRefactoringListener(Java9_v2Listener):
             text="import " + self.target_package + '.' + self.class_identifier + ';'
         )
 
-    # Enter a parse tree produced by Java9_v2Parser#normalClassDeclaration.
-    def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
-        print("Refactoring started, please wait...")
-        if ctx.identifier().getText() != self.class_identifier:
+    # Exit a parse tree produced by Java9_v2Parser#singleStaticImportDeclaration.
+    def exitSingleStaticImportDeclaration(self, ctx: Java9_v2Parser.SingleStaticImportDeclarationContext):
+        if ctx.typeName().getText() + '.' + ctx.identifier().getText() != \
+                self.source_package + '.' + self.class_identifier:
             return
-        self.enter_class = True
-        self.class_found = True
+
+        start_index = ctx.start.tokenIndex
+        stop_index = ctx.stop.tokenIndex
+
+        # replace the import source package with target package
+        self.token_stream_rewriter.replace(
+            program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+            from_idx=start_index,
+            to_idx=stop_index,
+            text="import static " + self.target_package + '.' + self.class_identifier + ';'
+        )
 
     # Exit a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def exitNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
