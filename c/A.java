@@ -3,8 +3,7 @@ package c;
 // Class "A" moved here from package a.aa by CodART
 class A
 {
-
-
+    
     public int f, c, a; /* printF , printF, */
     public int g; /* printF, printG */
     public string h; /* printH */
