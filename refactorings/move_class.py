@@ -71,6 +71,22 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         if package_name != self.source_package:
             raise ValueError(f"The package {package_name} isn't equal to the source package!")
 
+    # Exit a parse tree produced by Java9_v2Parser#singleTypeImportDeclaration.
+    def exitSingleTypeImportDeclaration(self, ctx: Java9_v2Parser.SingleTypeImportDeclarationContext):
+        if ctx.typeName().getText() != self.source_package + '.' + self.class_identifier:
+            return
+
+        start_index = ctx.start.tokenIndex
+        stop_index = ctx.stop.tokenIndex
+
+        # replace the import source package with target package
+        self.token_stream_rewriter.replace(
+            program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+            from_idx=start_index,
+            to_idx=stop_index,
+            text="import " + self.target_package + '.' + self.class_identifier + ';'
+        )
+
     # Enter a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         print("Refactoring started, please wait...")
