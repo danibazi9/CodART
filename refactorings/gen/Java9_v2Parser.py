@@ -1,4 +1,4 @@
-# Generated from D:/AnacondaProjects/CodART/grammars\Java9_v2.g4 by ANTLR 4.9
+# Generated from D:/iEducation/University/TermNo5/Compiler Design/Exercise/ProjectNew/CodART/grammars\Java9_v2.g4 by ANTLR 4.9.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -2202,7 +2202,7 @@ class Java9_v2Parser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.9")
+        self.checkVersion("4.9.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -2210,6 +2210,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LiteralContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -2277,6 +2278,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimitiveTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -2408,6 +2410,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class NumericTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -2507,6 +2510,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class IntegralTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -2571,6 +2575,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FloatingPointTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -2626,6 +2631,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ReferenceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -2757,6 +2763,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -2857,6 +2864,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3020,6 +3028,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassType_lf_classOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3102,6 +3111,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassType_lfno_classOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3179,6 +3189,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3226,6 +3237,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceType_lf_classOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3273,6 +3285,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceType_lfno_classOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3320,6 +3333,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeVariableContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3385,6 +3399,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ArrayTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3531,6 +3546,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class DimsContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3629,6 +3645,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeParameterContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3706,6 +3723,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeParameterModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3753,6 +3771,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeBoundContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3877,6 +3896,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AdditionalBoundContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3929,6 +3949,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeArgumentsContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -3986,6 +4007,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeArgumentListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4055,6 +4077,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeArgumentContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4154,6 +4177,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class WildcardContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4230,6 +4254,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class WildcardBoundsContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4337,6 +4362,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ModuleNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4455,6 +4481,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PackageNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4573,6 +4600,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4681,6 +4709,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PackageOrTypeNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4799,6 +4828,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExpressionNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4907,6 +4937,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -4954,6 +4985,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AmbiguousNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5072,6 +5104,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class CompilationUnitContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5171,6 +5204,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class OrdinaryCompilationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5264,6 +5298,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ModularCompilationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5329,6 +5364,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PackageDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5404,6 +5440,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PackageModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5451,6 +5488,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ImportDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5614,6 +5652,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SingleTypeImportDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5671,6 +5710,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeImportOnDemandDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5738,6 +5778,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SingleStaticImportDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5811,6 +5852,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class StaticImportOnDemandDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -5883,6 +5925,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6013,6 +6056,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ModuleDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6115,6 +6159,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ModuleDirectiveContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6444,6 +6489,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class RequiresModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6496,6 +6542,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6595,6 +6642,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class NormalClassDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6707,6 +6755,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6818,6 +6867,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeParametersContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6875,6 +6925,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeParameterListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6944,6 +6995,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SuperclassContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -6996,6 +7048,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SuperinterfacesContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7048,6 +7101,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceTypeListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7117,6 +7171,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassBodyContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7186,6 +7241,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassBodyDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7349,6 +7405,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassMemberDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7543,6 +7600,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FieldDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7619,6 +7677,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FieldModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7730,6 +7789,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class VariableDeclaratorListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7799,6 +7859,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class VariableDeclaratorContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7864,6 +7925,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class VariableDeclaratorIdContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -7924,6 +7986,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class VariableInitializerContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8023,6 +8086,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8122,6 +8186,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannPrimitiveTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8220,6 +8285,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannReferenceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8351,6 +8417,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannClassOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8451,6 +8518,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannClassTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8598,6 +8666,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannClassType_lf_unannClassOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8680,6 +8749,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannClassType_lfno_unannClassOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8740,6 +8810,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8787,6 +8858,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannInterfaceType_lf_unannClassOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8834,6 +8906,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannInterfaceType_lfno_unannClassOrInterfaceTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8881,6 +8954,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannTypeVariableContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -8928,6 +9002,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnannArrayTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9074,6 +9149,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9145,6 +9221,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9272,6 +9349,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodHeaderContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9384,6 +9462,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ResultContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9447,6 +9526,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodDeclaratorContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9529,6 +9609,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FormalParameterListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9669,6 +9750,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FormalParametersContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9813,6 +9895,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FormalParameterContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9884,6 +9967,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class VariableModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -9947,6 +10031,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LastFormalParameterContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10088,6 +10173,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ReceiverParameterContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10175,6 +10261,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class Throws_Context(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10227,6 +10314,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExceptionTypeListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10296,6 +10384,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExceptionTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10395,6 +10484,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodBodyContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10458,6 +10548,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InstanceInitializerContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10505,6 +10596,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class StaticInitializerContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10557,6 +10649,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConstructorDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10640,6 +10733,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConstructorModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10719,6 +10813,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConstructorDeclaratorContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10801,6 +10896,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SimpleTypeNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10848,6 +10944,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConstructorBodyContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -10924,6 +11021,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExplicitConstructorInvocationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11238,6 +11336,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnumDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11326,6 +11425,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnumBodyContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11413,6 +11513,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnumConstantListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11482,6 +11583,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnumConstantContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11587,6 +11689,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnumConstantModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11634,6 +11737,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnumBodyDeclarationsContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11698,6 +11802,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11797,6 +11902,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class NormalInterfaceDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -11897,6 +12003,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12000,6 +12107,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExtendsInterfacesContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12052,6 +12160,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceBodyContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12121,6 +12230,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceMemberDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12315,6 +12425,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConstantDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12391,6 +12502,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConstantModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12470,6 +12582,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceMethodDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12541,6 +12654,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InterfaceMethodModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12644,6 +12758,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AnnotationTypeDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12725,6 +12840,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AnnotationTypeBodyContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12794,6 +12910,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AnnotationTypeMemberDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -12988,6 +13105,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AnnotationTypeElementDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13098,6 +13216,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AnnotationTypeElementModifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13169,6 +13288,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class DefaultValueContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13221,6 +13341,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AnnotationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13352,6 +13473,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class NormalAnnotationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13427,6 +13549,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ElementValuePairListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13496,6 +13619,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ElementValuePairContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13554,6 +13678,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ElementValueContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13685,6 +13810,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ElementValueArrayInitializerContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13760,6 +13886,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ElementValueListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13829,6 +13956,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MarkerAnnotationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13881,6 +14009,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SingleElementAnnotationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -13949,6 +14078,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ArrayInitializerContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14024,6 +14154,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class VariableInitializerListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14093,6 +14224,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class BlockContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14157,6 +14289,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class BlockStatementsContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14218,6 +14351,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class BlockStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14349,6 +14483,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LocalVariableDeclarationStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14401,6 +14536,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LocalVariableDeclarationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14472,6 +14608,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class StatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14699,6 +14836,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class StatementNoShortIfContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -14894,6 +15032,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class StatementWithoutTrailingSubstatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15303,6 +15442,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EmptyStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15349,6 +15489,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LabeledStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15407,6 +15548,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LabeledStatementNoShortIfContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15465,6 +15607,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExpressionStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15517,6 +15660,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class StatementExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15776,6 +15920,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class IfThenStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15844,6 +15989,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class IfThenElseStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -15923,6 +16069,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class IfThenElseStatementNoShortIfContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16001,6 +16148,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AssertStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16125,6 +16273,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SwitchStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16193,6 +16342,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SwitchBlockContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16280,6 +16430,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SwitchBlockStatementGroupContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16333,6 +16484,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SwitchLabelsContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16394,6 +16546,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SwitchLabelContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16544,6 +16697,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnumConstantNameContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16591,6 +16745,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class WhileStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16659,6 +16814,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class WhileStatementNoShortIfContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16727,6 +16883,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class DoStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16805,6 +16962,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ForStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -16904,6 +17062,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ForStatementNoShortIfContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17003,6 +17162,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class BasicForStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17112,6 +17272,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class BasicForStatementNoShortIfContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17221,6 +17382,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ForInitContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17320,6 +17482,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ForUpdateContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17367,6 +17530,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class StatementExpressionListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17436,6 +17600,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnhancedForStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17539,6 +17704,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EnhancedForStatementNoShortIfContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17642,6 +17808,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class BreakStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17706,6 +17873,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ContinueStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17770,6 +17938,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ReturnStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17834,6 +18003,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ThrowStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17891,6 +18061,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class SynchronizedStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -17959,6 +18130,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TryStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18120,6 +18292,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class CatchesContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18181,6 +18354,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class CatchClauseContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18249,6 +18423,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class CatchFormalParameterContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18320,6 +18495,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class CatchTypeContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18393,6 +18569,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class Finally_Context(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18445,6 +18622,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TryWithResourcesStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18528,6 +18706,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ResourceSpecificationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18597,6 +18776,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ResourceListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18666,6 +18846,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ResourceContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18796,6 +18977,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class VariableAccessContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18895,6 +19077,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -18976,6 +19159,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArrayContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -19346,6 +19530,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lf_arrayAccessContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -19389,6 +19574,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lfno_arrayAccessContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -19797,6 +19983,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -19992,6 +20179,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -20035,6 +20223,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -20198,6 +20387,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -20700,6 +20890,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -20743,6 +20934,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -21213,6 +21405,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassLiteralContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -21371,6 +21564,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassInstanceCreationExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -21767,6 +21961,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassInstanceCreationExpression_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -21900,6 +22095,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ClassInstanceCreationExpression_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22183,6 +22379,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class TypeArgumentsOrDiamondContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22285,6 +22482,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FieldAccessContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22451,6 +22649,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FieldAccess_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22503,6 +22702,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class FieldAccess_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22628,6 +22828,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ArrayAccessContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22746,6 +22947,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ArrayAccess_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22842,6 +23044,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ArrayAccess_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -22960,6 +23163,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodInvocationContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -23410,6 +23614,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodInvocation_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -23497,6 +23702,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodInvocation_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -23876,6 +24082,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ArgumentListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -23945,6 +24152,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodReferenceContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -24339,6 +24547,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodReference_lf_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -24404,6 +24613,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MethodReference_lfno_primaryContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -24746,6 +24956,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ArrayCreationExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -24977,6 +25188,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class DimExprsContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25039,6 +25251,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class DimExprContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25114,6 +25327,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConstantExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25161,6 +25375,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25260,6 +25475,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LambdaExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25318,6 +25534,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LambdaParametersContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25472,6 +25689,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InferredFormalParameterListContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25541,6 +25759,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LambdaBodyContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25640,6 +25859,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AssignmentExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25739,6 +25959,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AssignmentContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25798,6 +26019,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class LeftHandSideContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -25929,6 +26151,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AssignmentOperatorContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26014,6 +26237,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConditionalExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26146,6 +26370,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConditionalOrExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26264,6 +26489,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ConditionalAndExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26382,6 +26608,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class InclusiveOrExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26500,6 +26727,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ExclusiveOrExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26618,6 +26846,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AndExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26736,6 +26965,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class EqualityExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -26904,6 +27134,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class RelationalExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -27201,6 +27432,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class ShiftExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -27429,6 +27661,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class AdditiveExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -27597,6 +27830,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class MultiplicativeExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -27808,6 +28042,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnaryExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28008,6 +28243,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PreIncrementExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28060,6 +28296,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PreDecrementExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28112,6 +28349,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class UnaryExpressionNotPlusMinusContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28283,6 +28521,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PostfixExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28383,6 +28622,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PostIncrementExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28435,6 +28675,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PostIncrementExpression_lf_postfixExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28481,6 +28722,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PostDecrementExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28533,6 +28775,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class PostDecrementExpression_lf_postfixExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28579,6 +28822,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class CastExpressionContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -28782,6 +29026,7 @@ class Java9_v2Parser ( Parser ):
 
 
     class IdentifierContext(ParserRuleContext):
+        __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
