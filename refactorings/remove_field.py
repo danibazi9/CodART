@@ -1,4 +1,5 @@
 import os
+import time
 
 from antlr4 import *
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
@@ -14,6 +15,9 @@ class RemoveFieldRefactoringListener(Java9_v2Listener):
         :param common_token_stream:
         """
         self.enter_class = False
+        self.enter_field = False
+        self.is_found_field = False
+        self.is_found = False
         self.token_stream = common_token_stream
         self.class_identifier = class_identifier
         self.class_number = 0
@@ -42,6 +46,7 @@ class RemoveFieldRefactoringListener(Java9_v2Listener):
         else:
             raise ValueError("fieldname is None")
 
+    # Enter a parse tree produced by Java9_v2Parser#normalClassDeclaration.
     def enterNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
         print("Refactoring started, please wait...")
         self.class_number += 1
@@ -64,11 +69,59 @@ class RemoveFieldRefactoringListener(Java9_v2Listener):
         # print("----------------------------")
 
     # Enter a parse tree produced by Java9_v2Parser#fieldDeclaration.
-    def enterFieldDeclaration(self, ctx: Java9_v2Parser.FieldDeclarationContext):
+    def enterFieldDeclaration(self, ctx:Java9_v2Parser.FieldDeclarationContext):
+        if not self.enter_class:
+            return
+        self.enter_field = True
+        self.is_found_field = False
+
+    # Exit a parse tree produced by Java9_v2Parser#fieldDeclaration.
+    def exitFieldDeclaration(self, ctx: Java9_v2Parser.FieldDeclarationContext):
         if not self.enter_class:
             return
 
-        list_of_fields = ctx.variableDeclaratorList().getText().split(",")
+        # print("Enter 'exitFieldDeclaration' Methode")
+        start = ctx.start.tokenIndex
+        stop = ctx.stop.tokenIndex
 
-        for field in list_of_fields:
-            self.class_fields.append(field)
+        if (self.is_found_field):
+            self.token_stream_rewriter.delete(program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+                                              from_idx=start,
+                                              to_idx=stop)
+            print(f'Field: "{self.fieldname}" SUCCESSFULLY REMOVED...')
+
+    # Exit a parse tree produced by Java9_v2Parser#variableDeclaratorList.
+    def exitVariableDeclaratorList(self, ctx:Java9_v2Parser.VariableDeclaratorListContext):
+        if not (self.enter_class and self.enter_field):
+            return
+        # print("Enter 'exitVariableDeclaratorList' Methode")
+        fields = ctx.getText().split(',')
+        start = ctx.start.tokenIndex
+        stop = ctx.stop.tokenIndex
+        for index, field in enumerate(fields):
+            if (self.fieldname == str(field).split('=')[0]):
+                self.is_found = True
+                self.is_found_field = True
+                print(f'Find "{self.fieldname}", At: {start} - {stop}')
+                if (len(fields) == 1):
+                    return
+                del fields[index]
+                print('New: ' ,', '.join(str(field) for field in fields))
+                self.token_stream_rewriter.replace(program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+                                                   from_idx=start,
+                                                   to_idx=stop,
+                                                   text=', '.join(str(field) for field in fields))
+                self.is_found_field = False
+                print(f'Field: "{self.fieldname}" SUCCESSFULLY REMOVED...')
+                break
+
+    # Exit a parse tree produced by Java9_v2Parser#ordinaryCompilation.
+    def exitOrdinaryCompilation(self, ctx:Java9_v2Parser.OrdinaryCompilationContext):
+        if not self.is_found:
+            print(f'Field "{self.fieldname}" NOT FOUND...')
+
+
+    # Exit a parse tree produced by Java9_v2Parser#modularCompilation.
+    def exitModularCompilation(self, ctx:Java9_v2Parser.ModularCompilationContext):
+        if not self.is_found:
+            print(f'Field "{self.fieldname}" NOT FOUND...')

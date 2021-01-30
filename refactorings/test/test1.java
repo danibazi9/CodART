@@ -1,7 +1,7 @@
 /* Before refactoring (Original version) */
 class A
 {
-    public int f; /* printF , printF, */
+    public int f, a=3, b, c, d=4; /* printF , printF, */
     public int g; /* printF, printG */
     public string h; /* printH */
 

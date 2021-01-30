@@ -41,7 +41,7 @@ def main(args):
 
     # Step 6: Create an instance of AssignmentStListener
     my_listener = RemoveFieldRefactoringListener(common_token_stream=token_stream, class_identifier='A',
-                                                 fieldname='f', filename=args.file)
+                                                 fieldname='g', filename=args.file)
 
     # return
     walker = ParseTreeWalker()
