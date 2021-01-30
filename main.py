@@ -20,8 +20,6 @@ from refactorings.replace_exception_with_test import ReplaceExceptionWithTestCla
 from refactorings.gen.Java9_v2Lexer import Java9_v2Lexer
 from refactorings.gen.Java9_v2Parser import Java9_v2Parser
 
-from java9speedy.parser import sa_java9_v2
-
 
 def main(args):
     # Step 1: Load input source into stream
@@ -36,16 +34,14 @@ def main(args):
     parser = Java9_v2Parser(token_stream)
     parser.getTokenStream()
 
+    print("=====Enter Create ParseTree=====")
     # Step 5: Create parse tree
-    # 1. Python backend --> Low speed
-    # parse_tree = parser.compilationUnit()
+    parse_tree = parser.compilationUnit()
+    print("=====Create ParseTree Finished=====")
 
-    # 2. C++ backend --> high speed
-
-    parse_tree = sa_java9_v2.parse(stream, 'compilationUnit', None)
-    quit()
     # Step 6: Create an instance of AssignmentStListener
-    my_listener = ReplaceExceptionWithTestClassRefactoringListener()
+    my_listener = ReplaceExceptionWithTestClassRefactoringListener(common_token_stream=token_stream,
+                                                 class_identifier='A', filename=args.file)
 
     # return
     walker = ParseTreeWalker()
@@ -59,6 +55,6 @@ if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         '-n', '--file',
-        help='Input source', default=r'../grammars/Test.java')
+        help='Input source', default=r'refactorings/test/test2.java')
     args = argparser.parse_args()
     main(args)
