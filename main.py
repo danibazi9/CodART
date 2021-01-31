@@ -55,6 +55,6 @@ if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         '-n', '--file',
-        help='Input source', default=r'refactorings/test/test2.java')
+        help='Input source', default=r'refactorings/test/test3.java')
     args = argparser.parse_args()
     main(args)
