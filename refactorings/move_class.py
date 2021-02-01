@@ -3,11 +3,11 @@ import os
 from antlr4 import *
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 
-from refactorings.gen.Java9_v2Parser import Java9_v2Parser
-from refactorings.gen.Java9_v2Listener import Java9_v2Listener
+from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
+from gen.javaLabeled.JavaParserLabeledListener import JavaParserLabeledListener
 
 
-class MoveClassRefactoringListener(Java9_v2Listener):
+class MoveClassRefactoringListener(JavaParserLabeledListener):
     """
     To implement the move class refactoring
     a stream of tokens is sent to the listener, to build an object token_stream_rewriter
@@ -21,7 +21,6 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         """
         self.enter_class = False
         self.token_stream = common_token_stream
-        self.class_identifier = class_identifier
         self.class_found = False
 
         # Move all the tokens in the source code in a buffer, token_stream_rewriter.
@@ -65,50 +64,39 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         self.NEW_LINE = "\n"
         self.code = ""
 
-    # Enter a parse tree produced by Java9_v2Parser#packageDeclaration.
-    def enterPackageDeclaration(self, ctx: Java9_v2Parser.PackageDeclarationContext):
+    # Enter a parse tree produced by JavaParserLabeled#packageDeclaration.
+    def enterPackageDeclaration(self, ctx: JavaParserLabeled.PackageDeclarationContext):
         package_name = ctx.getText().split("package")[1].replace(';', '')
         if package_name != self.source_package:
             raise ValueError(f"The package {package_name} isn't equal to the source package!")
 
-    # Exit a parse tree produced by Java9_v2Parser#singleTypeImportDeclaration.
-    def exitSingleTypeImportDeclaration(self, ctx: Java9_v2Parser.SingleTypeImportDeclarationContext):
-        if ctx.typeName().getText() != self.source_package + '.' + self.class_identifier:
+    # Exit a parse tree produced by JavaParserLabeled#importDeclaration.
+    def exitImportDeclaration(self, ctx: JavaParserLabeled.ImportDeclarationContext):
+        if ctx.qualifiedName().getText() != self.source_package + '.' + self.class_identifier:
             return
 
         start_index = ctx.start.tokenIndex
         stop_index = ctx.stop.tokenIndex
+
+        text_to_replace = "import " + self.target_package + '.' + self.class_identifier + ';'
+        if ctx.STATIC() is not None:
+            text_to_replace = text_to_replace.replace("import", "import static")
 
         # replace the import source package with target package
         self.token_stream_rewriter.replace(
             program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
             from_idx=start_index,
             to_idx=stop_index,
-            text="import " + self.target_package + '.' + self.class_identifier + ';'
+            text=text_to_replace
         )
 
-    # Exit a parse tree produced by Java9_v2Parser#singleStaticImportDeclaration.
-    def exitSingleStaticImportDeclaration(self, ctx: Java9_v2Parser.SingleStaticImportDeclarationContext):
-        if ctx.typeName().getText() + '.' + ctx.identifier().getText() != \
-                self.source_package + '.' + self.class_identifier:
-            return
-
-        start_index = ctx.start.tokenIndex
-        stop_index = ctx.stop.tokenIndex
-
-        # replace the import source package with target package
-        self.token_stream_rewriter.replace(
-            program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
-            from_idx=start_index,
-            to_idx=stop_index,
-            text="import static " + self.target_package + '.' + self.class_identifier + ';'
-        )
-
-    # Exit a parse tree produced by Java9_v2Parser#normalClassDeclaration.
-    def exitNormalClassDeclaration(self, ctx: Java9_v2Parser.NormalClassDeclarationContext):
+    # Enter a parse tree produced by JavaParserLabeled#classDeclaration.
+    def enterClassDeclaration(self, ctx: JavaParserLabeled.ClassDeclarationContext):
         self.enter_class = False
-        if ctx.identifier().getText() != self.class_identifier:
+        if ctx.IDENTIFIER().getText() != self.class_identifier:
             return
+
+        self.class_found = True
 
         start_index = ctx.start.tokenIndex
         stop_index = ctx.stop.tokenIndex
@@ -141,36 +129,25 @@ class MoveClassRefactoringListener(Java9_v2Listener):
         print("Class methods: ", str(self.class_methods))
         print("----------------------------")
 
-    # Enter a parse tree produced by Java9_v2Parser#fieldDeclaration.
-    def enterFieldDeclaration(self, ctx: Java9_v2Parser.FieldDeclarationContext):
+    # Enter a parse tree produced by JavaParserLabeled#fieldDeclaration.
+    def enterFieldDeclaration(self, ctx: JavaParserLabeled.FieldDeclarationContext):
         if not self.enter_class:
             return
 
-        list_of_fields = ctx.variableDeclaratorList().getText().split(",")
+        list_of_fields = ctx.variableDeclarators().getText().split(",")
 
         for field in list_of_fields:
             self.class_fields.append(field)
 
-    # Enter a parse tree produced by Java9_v2Parser#methodDeclaration.
-    def enterMethodDeclaration(self, ctx: Java9_v2Parser.MethodDeclarationContext):
+    # Enter a parse tree produced by JavaParserLabeled#methodDeclaration.
+    def enterMethodDeclaration(self, ctx: JavaParserLabeled.MethodDeclarationContext):
         if not self.enter_class:
             return
-        method_name = ctx.methodHeader().methodDeclarator().identifier().getText()
+        method_name = ctx.IDENTIFIER().getText()
         self.class_methods.append(method_name)
 
-    # Exit a parse tree produced by Java9_v2Parser#ordinaryCompilation.
-    def exitOrdinaryCompilation(self, ctx: Java9_v2Parser.OrdinaryCompilationContext):
-        file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
-        if not self.class_found:
-            raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")
-
-        new_file = open(file_address, 'w')
-        new_file.write(self.code.replace("\r", ""))
-        print(f"The class \"{self.class_identifier}\" moved to the target package.")
-        print("Finished Processing...")
-
-    # Enter a parse tree produced by Java9_v2Parser#modularCompilation.
-    def exitModularCompilation(self, ctx: Java9_v2Parser.ModularCompilationContext):
+    # Exit a parse tree produced by JavaParserLabeled#compilationUnit.
+    def exitCompilationUnit(self, ctx: JavaParserLabeled.CompilationUnitContext):
         file_address = self.target_package.replace('.', '/') + '/' + self.class_identifier + ".java"
         if not self.class_found:
             raise ValueError(f"Class \"{self.class_identifier}\" NOT FOUND!")

@@ -1,10 +1,10 @@
 package a.aa;
-import static a.aa.B;
+import static a.aa.A;
 import vddf.dfdf.A;
 
 class A
 {
-    class B{
+    class B {
     }
 
     public int f, c, a; /* printF , printF, */

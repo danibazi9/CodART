@@ -17,8 +17,8 @@ from antlr4 import *
 
 from refactorings.encapsulate_field import EncapsulateFiledRefactoringListener
 from refactorings.move_class import MoveClassRefactoringListener
-from refactorings.gen.Java9_v2Lexer import Java9_v2Lexer
-from refactorings.gen.Java9_v2Parser import Java9_v2Parser
+from gen.javaLabeled.JavaLexer import JavaLexer
+from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
 
 
 def main(args):
@@ -27,11 +27,11 @@ def main(args):
     # input_stream = StdinStream()
 
     # Step 2: Create an instance of AssignmentStLexer
-    lexer = Java9_v2Lexer(stream)
+    lexer = JavaLexer(stream)
     # Step 3: Convert the input source into a list of tokens
     token_stream = CommonTokenStream(lexer)
     # Step 4: Create an instance of the AssignmentStParser
-    parser = Java9_v2Parser(token_stream)
+    parser = JavaParserLabeled(token_stream)
     parser.getTokenStream()
 
     # Step 5: Create parse tree
