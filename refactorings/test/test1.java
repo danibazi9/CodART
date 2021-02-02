@@ -2,7 +2,7 @@
 class A
 {
     public int f, a=3, b, c, d=4; /* printF , printF, */
-    public int g; /* printF, printG */
+    public g; /* printF, printG */
     public string h; /* printH */
 
     // Method 1
