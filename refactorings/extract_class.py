@@ -115,7 +115,7 @@ class ExtractClassRefactoringListener(JavaParserLabeledListener):
 
     def __init__(self, common_token_stream: CommonTokenStream = None,
                  source_class: str = None, new_class: str = None,
-                 moved_fields=None, moved_methods=None):
+                 moved_fields=None, moved_methods=None, filename: str = None):
 
         if moved_methods is None:
             self.moved_methods = []
@@ -132,6 +132,11 @@ class ExtractClassRefactoringListener(JavaParserLabeledListener):
         else:
             self.token_stream_rewriter = TokenStreamRewriter(common_token_stream)
 
+        if filename is None:
+            raise ValueError('filename is None')
+        else:
+            self.filename = filename
+
         if source_class is None:
             raise ValueError("source_class is None")
         else:
@@ -141,8 +146,6 @@ class ExtractClassRefactoringListener(JavaParserLabeledListener):
             raise ValueError("new_class is None")
         else:
             self.new_class = new_class
-
-        self.checked = False
 
         self.is_source_class = False
         self.detected_field = None
@@ -170,10 +173,12 @@ class ExtractClassRefactoringListener(JavaParserLabeledListener):
 
     def exitCompilationUnit(self, ctx: JavaParserLabeled.CompilationUnitContext):
         print("Finished Processing...")
-        self.token_stream_rewriter.insertAfter(
-            index=ctx.stop.tokenIndex,
-            text=self.code
-        )
+        new_file = open(file=self.filename.rsplit('/')[1] + '/' + self.new_class + '.java', mode='w')
+        new_file.write(self.code)
+        # self.token_stream_rewriter.insertAfter(
+        #     index=ctx.stop.tokenIndex,
+        #     text=self.code
+        # )
 
     def enterVariableDeclaratorId(self, ctx: JavaParserLabeled.VariableDeclaratorIdContext):
         if not self.is_source_class:
