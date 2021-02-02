@@ -1,6 +1,8 @@
 /* Before refactoring (Original version) */
 class A
 {
+	ANew new_object = new ANew();
+
     public int f; /* printF , printF, */
     public int g; /* printF, printG */
      /* printH */

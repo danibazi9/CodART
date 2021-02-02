@@ -5,6 +5,7 @@ class A
     public int g; /* printF, printG */
     public string h; /* printH */
 
+
     // Method 1
     void printF(int i)
     {
