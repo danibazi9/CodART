@@ -245,3 +245,104 @@ class ExtractClassRefactoringListener(JavaParserLabeledListener):
                 to_idx=stop_index
             )
             self.detected_method = None
+
+
+class ReplaceDependentObjectsListener(JavaParserLabeledListener):
+    """
+    To implement extract class refactoring based on its actors.
+    Creates a new class and move fields and methods from the old class to the new one
+    """
+
+    def __init__(self, common_token_stream: CommonTokenStream = None,
+                 source_class: str = None, new_class: str = None,
+                 moved_fields=None, moved_methods=None, filename: str = None):
+
+        if moved_methods is None:
+            self.moved_methods = []
+        else:
+            self.moved_methods = moved_methods
+
+        if moved_fields is None:
+            self.moved_fields = []
+        else:
+            self.moved_fields = moved_fields
+
+        if common_token_stream is None:
+            raise ValueError('common_token_stream is None')
+        else:
+            self.token_stream_rewriter = TokenStreamRewriter(common_token_stream)
+
+        if filename is None:
+            raise ValueError('filename is None')
+        else:
+            self.filename = filename
+
+        if source_class is None:
+            raise ValueError("source_class is None")
+        else:
+            self.source_class = source_class
+
+        if new_class is None:
+            raise ValueError("new_class is None")
+        else:
+            self.new_class = new_class
+
+        self.NEW_LINE = "\n"
+        self.BACKSLASH = "\\"
+
+        self.import_token_index = 0
+        self.import_text = ''
+        self.write_import = False
+
+    def exitExpression1(self, ctx: JavaParserLabeled.Expression1Context):
+        if ctx.expression().getText() != self.source_class:
+            return
+        if ctx.methodCall() is not None:
+            if ctx.methodCall().IDENTIFIER() is not None:
+                method_name = ctx.methodCall().IDENTIFIER().getText()
+                if method_name in self.moved_methods:
+                    if not self.write_import:
+                        self.token_stream_rewriter.insertAfter(
+                            program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+                            index=self.import_token_index,
+                            text='\n' + self.import_text
+                        )
+                        self.write_import = True
+
+                    self.token_stream_rewriter.replace(
+                        program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+                        from_idx=ctx.expression().start.tokenIndex,
+                        to_idx=ctx.expression().stop.tokenIndex,
+                        text=f"{self.new_class}"
+                    )
+        elif ctx.IDENTIFIER() is not None:
+            field_name = ctx.IDENTIFIER().getText()
+            if field_name in self.moved_fields:
+                if not self.write_import:
+                    self.token_stream_rewriter.insertAfter(
+                        program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+                        index=self.import_token_index,
+                        text='\n' + self.import_text
+                    )
+                    self.write_import = True
+
+                self.token_stream_rewriter.replace(
+                    program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+                    from_idx=ctx.expression().start.tokenIndex,
+                    to_idx=ctx.expression().stop.tokenIndex,
+                    text=f"{self.new_class}"
+                )
+
+    def exitCompilationUnit(self, ctx: JavaParserLabeled.CompilationUnitContext):
+        print("Finished Processing...")
+        new_file = open(file=self.filename, mode='w')
+        new_file.write(self.token_stream_rewriter.getDefaultText().replace('\r', ''))
+
+    def exitImportDeclaration(self, ctx: JavaParserLabeled.ImportDeclarationContext):
+        if not ctx.qualifiedName().getText().endswith(self.source_class):
+            return
+
+        self.import_token_index = ctx.stop.tokenIndex
+
+        self.import_text = ctx.getText().replace('import', 'import ').\
+            replace('.' + self.source_class, '.' + self.new_class)
