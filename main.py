@@ -17,8 +17,8 @@ from antlr4 import *
 
 from refactorings.encapsulate_field import EncapsulateFiledRefactoringListener
 from refactorings.remove_field import RemoveFieldRefactoringListener
-from refactorings.gen.Java9_v2Lexer import Java9_v2Lexer
-from refactorings.gen.Java9_v2Parser import Java9_v2Parser
+from refactorings.gen.javaLabeled.JavaLexer import *
+from refactorings.gen.javaLabeled.JavaParserLabeled import *
 
 
 def main(args):
@@ -27,11 +27,11 @@ def main(args):
     # input_stream = StdinStream()
 
     # Step 2: Create an instance of AssignmentStLexer
-    lexer = Java9_v2Lexer(stream)
+    lexer = JavaLexer(stream)
     # Step 3: Convert the input source into a list of tokens
     token_stream = CommonTokenStream(lexer)
     # Step 4: Create an instance of the AssignmentStParser
-    parser = Java9_v2Parser(token_stream)
+    parser = JavaParserLabeled(token_stream)
     parser.getTokenStream()
 
     print("=====Enter Create ParseTree=====")
@@ -41,7 +41,7 @@ def main(args):
 
     # Step 6: Create an instance of AssignmentStListener
     my_listener = RemoveFieldRefactoringListener(common_token_stream=token_stream, class_identifier='A',
-                                                 fieldname='g', filename=args.file)
+                                                 fieldname='a', filename=args.file)
 
     # return
     walker = ParseTreeWalker()
