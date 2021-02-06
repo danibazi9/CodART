@@ -2,7 +2,7 @@ import networkx as nx
 from antlr4 import *
 from antlr4.TokenStreamRewriter import TokenStreamRewriter
 
-from visualization import graph_visualization
+# from visualization import graph_visualization
 from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
 from gen.javaLabeled.JavaParserLabeledListener import JavaParserLabeledListener
 
@@ -101,7 +101,7 @@ class ExtractClassRecognizerListener(JavaParserLabeledListener):
         if self.method_no == 0:
             return
         current_method = self.method_name[-1]
-        variable_name = ctx.IDENTIFIER().getText()
+        variable_name = ctx.getText()
         if variable_name not in self.field_dict:
             return
         if current_method not in self.field_dict[variable_name]:
@@ -154,6 +154,19 @@ class ExtractClassRefactoringListener(JavaParserLabeledListener):
         self.TAB = "\t"
         self.NEW_LINE = "\n"
         self.code = ""
+
+    # Exit a parse tree produced by JavaParserLabeled#importDeclaration.
+    def exitImportDeclaration(self, ctx: JavaParserLabeled.ImportDeclarationContext):
+        text_to_replace = "import " + ctx.qualifiedName().getText() + ';'
+        if ctx.STATIC() is not None:
+            text_to_replace = text_to_replace.replace("import", "import static")
+
+        self.code += text_to_replace + self.NEW_LINE
+
+    # Enter a parse tree produced by JavaParserLabeled#packageDeclaration.
+    def enterPackageDeclaration(self, ctx: JavaParserLabeled.PackageDeclarationContext):
+        package_name = ctx.getText().split("package")[1].replace(';', '')
+        self.code += f"package {package_name};"
 
     def enterClassDeclaration(self, ctx: JavaParserLabeled.ClassDeclarationContext):
         print("Refactoring started, please wait...")
