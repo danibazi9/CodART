@@ -12,6 +12,7 @@ target_package = 'c'
 
 f_iteration_flag = False
 directory = '../../src'
+file_counter = 0
 
 
 def main(args):
@@ -55,7 +56,7 @@ def main(args):
                 break
 
         if not has_exact_import:
-            print(f"Start checking file \"{file_to_check.name}\"")
+            print(f"Start checking file \"{file_to_check.name}\" *** {file_counter}/100")
 
             my_listener = ReplaceDependentObjectsListener(
                 common_token_stream=token_stream, source_package=source_package, target_package=target_package,
@@ -67,7 +68,7 @@ def main(args):
             with open(args.file, mode='w', newline='') as f:
                 f.write(my_listener.token_stream_rewriter.getDefaultText().replace("\r", ""))
 
-            print(f"Finish checking file \"{file_to_check.name}\"")
+            print(f"Finish checking file \"{file_to_check.name}\" *** {file_counter}/100")
 
 
 def recursive_walk(dir):
