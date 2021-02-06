@@ -184,3 +184,103 @@ class MoveClassRefactoringListener(JavaParserLabeledListener):
         print("Finished Processing...")
 
 
+class ReplaceDependentObjectsListener(JavaParserLabeledListener):
+    """
+    To implement the move class refactoring
+    a stream of tokens is sent to the listener, to build an object token_stream_rewriter
+    and we move all class methods and fields from the source package to the target package
+    """
+
+    def __init__(self, common_token_stream: CommonTokenStream = None, class_identifier: str = None,
+                 source_package: str = None, target_package: str = None, filename: str = None, has_import: bool = None):
+        """
+        :param common_token_stream:
+        """
+        self.token_stream = common_token_stream
+
+        # Move all the tokens in the source code in a buffer, token_stream_rewriter.
+        if common_token_stream is not None:
+            self.token_stream_rewriter = TokenStreamRewriter(common_token_stream)
+        else:
+            raise TypeError('common_token_stream is None')
+
+        if class_identifier is not None:
+            self.class_identifier = class_identifier
+        else:
+            raise ValueError("class_identifier is None")
+
+        if filename is not None:
+            self.filename = filename
+        else:
+            raise ValueError("filename is None")
+
+        if has_import is not None:
+            self.has_import = has_import
+        else:
+            raise ValueError("has_import is None")
+
+        if source_package is not None:
+            self.source_package = source_package
+        else:
+            raise ValueError("source_package is None")
+
+        if target_package is not None:
+            self.target_package = target_package
+        else:
+            raise ValueError("target_package is None")
+
+        self.need_import = False
+        self.TAB = "\t"
+        self.NEW_LINE = "\n"
+        self.code = ""
+
+    # Exit a parse tree produced by JavaParserLabeled#importDeclaration.
+    def exitImportDeclaration(self, ctx: JavaParserLabeled.ImportDeclarationContext):
+        if ctx.qualifiedName().getText() != self.source_package + '.' + self.class_identifier:
+            return
+
+        start_index = ctx.start.tokenIndex
+        stop_index = ctx.stop.tokenIndex
+
+        text_to_replace = "import " + self.target_package + '.' + self.class_identifier + ';'
+        if ctx.STATIC() is not None:
+            text_to_replace = text_to_replace.replace("import", "import static")
+
+        # replace the import source package with target package
+        self.token_stream_rewriter.replace(
+            program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+            from_idx=start_index,
+            to_idx=stop_index,
+            text=text_to_replace
+        )
+
+    # Exit a parse tree produced by JavaParserLabeled#classOrInterfaceType.
+    def exitClassOrInterfaceType(self, ctx: JavaParserLabeled.ClassOrInterfaceTypeContext):
+        if not self.has_import or not self.need_import:
+            if self.class_identifier in ctx.getText().split('.'):
+                self.need_import = True
+
+    # Exit a parse tree produced by JavaParserLabeled#createdName0.
+    def exitCreatedName0(self, ctx: JavaParserLabeled.CreatedName0Context):
+        if not self.has_import or not self.need_import:
+            if self.class_identifier in ctx.getText().split('.'):
+                self.need_import = True
+
+    # Exit a parse tree produced by JavaParserLabeled#expression1.
+    def exitExpression1(self, ctx: JavaParserLabeled.Expression1Context):
+        if not self.has_import or not self.need_import:
+            if ctx.expression().getText == self.class_identifier:
+                self.need_import = True
+
+    # Exit a parse tree produced by JavaParserLabeled#typeDeclaration.
+    def exitTypeDeclaration(self, ctx: JavaParserLabeled.TypeDeclarationContext):
+        if ctx.classDeclaration() is not None:
+            if not self.has_import and self.need_import:
+                index = ctx.start.tokenIndex
+
+                # delete class declaration from source class
+                self.token_stream_rewriter.insertBefore(
+                    program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
+                    index=index,
+                    text="import " + self.target_package + '.' + self.class_identifier + ';' + self.NEW_LINE
+                )
