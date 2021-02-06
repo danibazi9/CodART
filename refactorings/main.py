@@ -7,8 +7,8 @@ from gen.javaLabeled.JavaParserLabeled import JavaParserLabeled
 
 source_class = 'A'
 new_class = 'ANew'
-moved_fields = ['h']
-moved_methods = ['printH']
+moved_fields = ['g']
+moved_methods = ['printG']
 
 f_iteration_flag = False
 source_class_dirname = ''
