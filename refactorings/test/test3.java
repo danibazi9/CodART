@@ -11,11 +11,5 @@ public class Main {
             System.out.println("IndexOutOfBoundsException Caught...");
             String index = "0";
         }
-        catch (ArrayStoreException exception){
-            //sth ...
-        }
-        finally{
-            //sth ...
-        }
     }
 }

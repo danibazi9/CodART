@@ -49,7 +49,7 @@ class ReplaceExceptionWithTestClassRefactoringListener(JavaParserLabeledListener
             lbraceline = ctx.block().children[0].symbol.line - 1
             self.lines[lbraceline] = self.lines[lbraceline].replace('{', '')
 
-            rbraceline = ctx.block().children[2].symbol.line - 1
+            rbraceline = ctx.block().children[-1].symbol.line - 1
             head, _sep, tail = self.lines[rbraceline].rpartition('}')
             self.lines[rbraceline] = self.lines[rbraceline] = head + '' + tail
 
