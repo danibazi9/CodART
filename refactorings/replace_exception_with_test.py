@@ -12,7 +12,7 @@ class ReplaceExceptionWithTestClassRefactoringListener(JavaParserLabeledListener
         self.token_stream = common_token_stream
         self.class_identifier = class_identifier
         self.dictionary = {}
-        with open('refactorings/test/test3.java', 'r') as file:
+        with open(filename, 'r') as file:
             self.lines = file.readlines()
             file.close()
 
@@ -53,7 +53,7 @@ class ReplaceExceptionWithTestClassRefactoringListener(JavaParserLabeledListener
             head, _sep, tail = self.lines[rbraceline].rpartition('}')
             self.lines[rbraceline] = self.lines[rbraceline] = head + '' + tail
 
-        file = open('refactorings/test/test3.java', 'w')
+        file = open(self.filename, 'w')
         file.writelines(self.lines)
         file.close()
         print("'exitTryStatement1'")

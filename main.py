@@ -6,6 +6,7 @@ The main module of CodART
 -- Add C++ backend support
 
 """
+import os
 
 __version__ = '0.2.0'
 __author__ = 'Morteza'
@@ -20,6 +21,7 @@ from refactorings.replace_exception_with_test import ReplaceExceptionWithTestCla
 from refactorings.gen.javaLabeled.JavaLexer import *
 from refactorings.gen.javaLabeled.JavaParserLabeled import *
 
+directory = 'refactorings/test'
 
 def main(args):
     # Step 1: Load input source into stream
@@ -51,10 +53,21 @@ def main(args):
         f.write(my_listener.token_stream_rewriter.getDefaultText())
 
 
-if __name__ == '__main__':
+def process_file(file):
     argparser = argparse.ArgumentParser()
+    # argparser.add_argument(
+    #     '-n', '--file',
+    #     help='Input source', default=r'refactorings/test/test3.java')
     argparser.add_argument(
         '-n', '--file',
-        help='Input source', default=r'refactorings/test/test3.java')
+        help='Input source', default=file)
     args = argparser.parse_args()
     main(args)
+
+
+if __name__ == '__main__':
+    for dirname, dirs, files in os.walk(directory):
+        for file in files:
+            name, extension = os.path.splitext(file)
+            if extension == '.java':
+                process_file("{}/{}".format(dirname, file))
