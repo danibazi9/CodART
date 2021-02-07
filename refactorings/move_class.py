@@ -275,7 +275,7 @@ class ReplaceDependentObjectsListener(JavaParserLabeledListener):
     # Exit a parse tree produced by JavaParserLabeled#typeDeclaration.
     def exitTypeDeclaration(self, ctx: JavaParserLabeled.TypeDeclarationContext):
         if ctx.classDeclaration() is not None:
-            if not self.has_import and self.need_import:
+            if not self.has_import or self.need_import:
                 index = ctx.start.tokenIndex
 
                 # delete class declaration from source class
