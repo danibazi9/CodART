@@ -101,11 +101,13 @@ class ExtractClassRecognizerListener(JavaParserLabeledListener):
         if self.method_no == 0:
             return
         current_method = self.method_name[-1]
-        variable_name = ctx.getText()
-        if variable_name not in self.field_dict:
-            return
-        if current_method not in self.field_dict[variable_name]:
-            self.field_dict[variable_name].append(current_method)
+
+        if ctx.IDENTIFIER() is not None:
+            variable_name = ctx.IDENTIFIER().getText()
+            if variable_name not in self.field_dict:
+                return
+            if current_method not in self.field_dict[variable_name]:
+                self.field_dict[variable_name].append(current_method)
 
 
 class ExtractClassRefactoringListener(JavaParserLabeledListener):
@@ -243,6 +245,10 @@ class ExtractClassRefactoringListener(JavaParserLabeledListener):
         if self.detected_method == method_identifier:
             start_index = ctx.start.tokenIndex
             stop_index = ctx.stop.tokenIndex
+
+            if ctx.parentCtx.parentCtx.modifier() is not None:
+                start_index = ctx.parentCtx.parentCtx.start.tokenIndex
+                stop_index = ctx.parentCtx.parentCtx.stop.tokenIndex
 
             method_text = self.token_stream_rewriter.getText(
                 program_name=self.token_stream_rewriter.DEFAULT_PROGRAM_NAME,
