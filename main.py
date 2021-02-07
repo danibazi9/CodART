@@ -6,6 +6,7 @@ The main module of CodART
 -- Add C++ backend support
 
 """
+import os
 
 __version__ = '0.2.0'
 __author__ = 'Morteza'
@@ -20,6 +21,7 @@ from refactorings.remove_field import RemoveFieldRefactoringListener
 from refactorings.gen.javaLabeled.JavaLexer import *
 from refactorings.gen.javaLabeled.JavaParserLabeled import *
 
+directory = 'refactorings/test'
 
 def main(args):
     # Step 1: Load input source into stream
@@ -41,7 +43,7 @@ def main(args):
 
     # Step 6: Create an instance of AssignmentStListener
     my_listener = RemoveFieldRefactoringListener(common_token_stream=token_stream, class_identifier='A',
-                                                 fieldname='a', filename=args.file)
+                                                 fieldname='g', filename=args.file)
 
     # return
     walker = ParseTreeWalker()
@@ -50,11 +52,20 @@ def main(args):
     with open('input.refactored.java', mode='w', newline='') as f:
         f.write(my_listener.token_stream_rewriter.getDefaultText())
 
-
-if __name__ == '__main__':
+def process_file(file):
     argparser = argparse.ArgumentParser()
+    # argparser.add_argument(
+    #     '-n', '--file',
+    #     help='Input source', default=r'refactorings/test/test1.java')
     argparser.add_argument(
         '-n', '--file',
-        help='Input source', default=r'refactorings/test/test1.java')
+        help='Input source', default=file)
     args = argparser.parse_args()
     main(args)
+
+if __name__ == '__main__':
+    for dirname, dirs, files in os.walk(directory):
+        for file in files:
+            name, extension = os.path.splitext(file)
+            if extension == '.java':
+                process_file("{}/{}".format(dirname, file))
